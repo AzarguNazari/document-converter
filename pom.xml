@@ -12,6 +12,16 @@
     <description>A library for converting documents between different formats</description>
     <url>http://nazaricode.com/document-converter</url>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
