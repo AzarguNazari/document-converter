@@ -10,5 +10,14 @@ FileConverter fileConverter = FilConverter.
     .convert();
 ```
 
+*WIP*: the project is currently under progress, but the goal is to support the conversion between the following file types:
+```shell
+PDF
+PNG
+JPG
+DOCX
+.... more types
+```
+
 
 
