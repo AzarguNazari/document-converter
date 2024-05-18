@@ -10,7 +10,7 @@ FileConverter fileConverter = FilConverter.
     .convert();
 ```
 
-*WIP*: the project is currently under progress, but the goal is to support the conversion between the following file types:
+*WIP*: the project is currently in progress, but the goal is to support the conversion between the following file types:
 ```shell
 PDF
 PNG
