@@ -1,17 +1,27 @@
 package com.nazaricode.documentconverter;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Objects;
 import org.junit.Test;
 
 public class FileConverterBuilderTest {
 
     @Test
-    public void testJpgToPdfConversion() {
-        byte[] source = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-        ConvertedFile convert = FileConverterBuilder.source(source)
+    public void testJpgToPdfConversion() throws IOException {
+        byte[] bytes = Objects.requireNonNull(FileConverterBuilderTest.class.getResourceAsStream("/test-example.jpg")).readAllBytes();
+        ConvertedFile convert = FileConverterBuilder.source(bytes)
             .from(FileType.JPG)
             .to(FileType.PDF)
             .convert();
-        assertEquals(convert.type(), FileType.PDF);
+        assertEquals(FileType.PDF, convert.type());
+        assertNotEquals(0, convert.size());
+        assertEquals(convert.fileData().getClass(), byte[].class);
+        try (OutputStream outputStream = new FileOutputStream("test.pdf")) {
+            outputStream.write(convert.fileData());
+        }
     }
 }
